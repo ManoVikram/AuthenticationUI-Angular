@@ -1,0 +1,51 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-ld-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold">Login</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <input type="text" class="text" placeholder="Username">
+                                </div>
+                            </div>
+                            <div class="form-group pt-3">
+                                <div class="input-field">
+                                    <span class="fa fa-lock p-2"></span>
+                                    <input [type]="type" class="text" placeholder="Password">
+                                    <span (click)="hideShowPassword()" class="fa {{ eyeIcon }}"></span>
+                                </div>
+                            </div>
+                            <div class="form-inline fr mt-4">
+                                <a href="" id="forgetPassword" class="font-weight-bolc">Forget Password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                            <div class="text-center pt-4 text-muted">
+                                Don't have an account?
+                                <a href="" id="forgetPassword" routerLink="/signup">Sign Up</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="mx-3 my-2 py-2 bordert">
+                        <div class="text-center py-3">
+                            <a href="https://facebook.com" class="px-2">
+                                <img src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png" alt="">
+                            </a>
+                            <a href="https://google.com" class="px-2">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png" alt="">
+                            </a>
+                            <a href="https://github.com" class="px-2">
+                                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="">
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
