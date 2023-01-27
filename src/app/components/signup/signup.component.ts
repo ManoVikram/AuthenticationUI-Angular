@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,7 +17,7 @@ export class SignupComponent {
 
   signUpForm !: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -36,22 +37,26 @@ export class SignupComponent {
 
   onSignup() {
     if (this.signUpForm.valid) {
-      console.log(this.signUpForm.value);
+      // console.log(this.signUpForm.value);
 
       this.auth.signUp(this.signUpForm.value).subscribe({
         next: (res) => {
-          alert(res.message);
+          // alert(res.message);
 
           this.signUpForm.reset();
+
+          this.toast.success({ detail: "SUCCESS", summary: res.message, duration: 5000 });
 
           this.router.navigate(["login"]);
         },
         error: (err) => {
-          alert(err?.error.message);
+          // alert(err?.error.message);
+
+          this.toast.error({ detail: "ERROR", summary: "Something went wrong!", duration: 5000 });
         }
       });
     } else {
-      // TODO: Logic to throw errors
+      // Logic to throw errors
       // this._validateAllFormFields(this.signUpForm);
       ValidateForm.validateAllFormFields(this.signUpForm);
     }
