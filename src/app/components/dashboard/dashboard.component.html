@@ -1,6 +1,41 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Dashboard</a>
-    <div>
-        <h4>Hello {{ name }}👋</h4>
+<div>
+    <nav class="navbar navbar-dark bg-dark justify-content-between px-5 py-3">
+        <!-- <a class="navbar-brand">Dashboard</a> -->
+        <!-- <h4>Hello <h3>{{ name }}👋</h3></h4> -->
+        <h5 class="mr-sm-2 text-white">Hello, {{ name }}👋</h5>
+        <button (click)="logOut()" type="button" class="btn btn-danger my-2 my-sm-0">Sign Out</button>
+    </nav>
+    <div class="px-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                </tr>
+                <!-- <tr *ngFor="let user of users">
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                </tr> -->
+            </tbody>
+        </table>
     </div>
-</nav>
+</div>

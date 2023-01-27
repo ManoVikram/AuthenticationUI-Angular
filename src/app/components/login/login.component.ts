@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from 'src/app/helpers/validateForm';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
 
   loginForm !: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router, private toast: NgToastService, private userStore: UserStoreService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -45,6 +46,10 @@ export class LoginComponent {
           this.loginForm.reset();
 
           this.auth.storeToken(res.token);
+
+          const tokenPayload = this.auth.decodedToken();
+
+          this.userStore.setNameForStore(tokenPayload.name);
 
           this.toast.success({ detail: "SUCCESS", summary: res.message, duration: 5000 });
 
